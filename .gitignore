@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+
+# Builds
+dist/
+apps/backend/dist/
+apps/frontend/dist/
+
+# Env
+.env
+apps/backend/.env
+apps/frontend/.env
+
+# Logs
+*.log
+logs/
+
+# Data
+data/
+tmp/
+.cache/
+
+# IDE
+.idea/
+.vscode/
+

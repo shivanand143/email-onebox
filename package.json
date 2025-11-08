@@ -1,0 +1,21 @@
+{
+  "name": "email-onebox",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Feature-rich email onebox with IMAP sync, Elasticsearch search, and AI features",
+  "license": "MIT",
+  "workspaces": [
+    "apps/backend",
+    "apps/frontend"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "dev": "concurrently \"npm run dev --workspace=apps/backend\" \"npm run dev --workspace=apps/frontend\"",
+    "lint": "npm run lint --workspaces",
+    "format": "npm run format --workspaces"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "typescript": "^5.4.5"
+  }
+}

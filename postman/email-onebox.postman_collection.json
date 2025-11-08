@@ -1,0 +1,206 @@
+{
+  "info": {
+    "name": "Email Onebox",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "API collection for the Email Onebox backend"
+  },
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/health",
+          "host": ["{{baseUrl}}"],
+          "path": ["health"]
+        }
+      }
+    },
+    {
+      "name": "Accounts",
+      "item": [
+        {
+          "name": "List Accounts",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/accounts",
+              "host": ["{{baseUrl}}"],
+              "path": ["accounts"]
+            }
+          }
+        },
+        {
+          "name": "Create Account",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"label\": \"Personal Gmail\",\n  \"email\": \"historyitihasa@gmail.com\",\n  \"folders\": [\"INBOX\"],\n  \"imap\": {\n    \"host\": \"imap.gmail.com\",\n    \"port\": 993,\n    \"secure\": true,\n    \"auth\": {\n      \"user\": \"historyitihasa@gmail.com\",\n      \"pass\": \"ohaosmjeyaygvwlw\"\n    }\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/accounts",
+              "host": ["{{baseUrl}}"],
+              "path": ["accounts"]
+            }
+          }
+        },
+        {
+          "name": "Sessions",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/accounts/sessions",
+              "host": ["{{baseUrl}}"],
+              "path": ["accounts", "sessions"]
+            }
+          }
+        },
+        {
+          "name": "Delete Account (provide id)",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/accounts/{{accountId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["accounts", "{{accountId}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Emails",
+      "item": [
+        {
+          "name": "Search Emails",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/emails?query=meeting",
+              "host": ["{{baseUrl}}"],
+              "path": ["emails"],
+              "query": [
+                {
+                  "key": "query",
+                  "value": "meeting"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Email",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/emails/{{emailId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["emails", "{{emailId}}"]
+            }
+          }
+        },
+        {
+          "name": "Update Category",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"category\": \"interested\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/emails/{{emailId}}/category",
+              "host": ["{{baseUrl}}"],
+              "path": ["emails", "{{emailId}}", "category"]
+            }
+          }
+        },
+        {
+          "name": "Suggested Reply",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"Hi, could we schedule a call next week?\",\n  \"context\": \"Share calendar link if they are interested\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/emails/{{emailId}}/suggest-reply",
+              "host": ["{{baseUrl}}"],
+              "path": ["emails", "{{emailId}}", "suggest-reply"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Knowledge Base",
+      "item": [
+        {
+          "name": "List Documents",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/knowledge",
+              "host": ["{{baseUrl}}"],
+              "path": ["knowledge"]
+            }
+          }
+        },
+        {
+          "name": "Create Document",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Job Application\",\n  \"content\": \"If interested, share https://cal.com/example\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/knowledge",
+              "host": ["{{baseUrl}}"],
+              "path": ["knowledge"]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:4000"
+    },
+    {
+      "key": "accountId",
+      "value": ""
+    },
+    {
+      "key": "143xyz420@gmail.com",
+      "value": "143xyz420@gmail.com"
+    }
+  ]
+}

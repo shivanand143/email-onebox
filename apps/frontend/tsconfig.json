@@ -1,0 +1,22 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "module": "ESNext",
+    "target": "ES2021",
+    "moduleResolution": "Bundler",
+    "allowImportingTsExtensions": false,
+    "types": ["vite/client"],
+    "noEmit": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@/components/*": ["components/*"],
+      "@/hooks/*": ["hooks/*"],
+      "@/stores/*": ["stores/*"],
+      "@/lib/*": ["lib/*"]
+    }
+  },
+  "include": ["src"],
+  "references": []
+}
+

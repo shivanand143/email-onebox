@@ -192,6 +192,6 @@ Hi, I am Shivanand. I built this project to learn end-to-end email automation an
 
 Thanks for reviewing my submission!
 
----
+
 
 

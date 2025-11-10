@@ -28,8 +28,7 @@ I write this readme in easy way, so anybody can run it.
 1. Node.js version 18 or more
 2. Docker and Docker Compose install
 3. Google Gemini API key (for AI)
-4. Slack bot token and channel (if you want Slack message)
-5. Little terminal knowledge
+4. Slack bot token and channel
 
 ---
 

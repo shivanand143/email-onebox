@@ -41,7 +41,7 @@ I write this readme in easy way, so anybody can run it.
 
 ---
 
-## .env file example
+## .env
 
 ```
 PORT=4000
@@ -173,7 +173,7 @@ Or open Kibana → Dev Tools → type `DELETE /emails`
 
 ## Step 9 - Submission
 
-I will upload:
+Uploaded Files:
 
 * apps/backend
 * apps/frontend

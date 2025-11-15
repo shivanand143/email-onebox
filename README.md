@@ -1,83 +1,63 @@
-Onebox Email Aggregator
+# Onebox Email Aggregator
 
-A clean and simple README explaining how to run and understand the Onebox Email Aggregator project. This contains no project-submission wording, only pure documentation.
-
-
----
-
-Overview
-
-Backend (Node.js + TypeScript)
-
-Connects to IMAP email accounts
-
-Fetches & stores emails in Elasticsearch
-
-Classifies emails using Gemini AI
-
-Generates smart replies using RAG (ChromaDB + embeddings)
-
-Sends Slack notifications and Webhook events for “Interested” emails
-
-
-Frontend (React)
-
-Displays emails with filters
-
-Shows classification
-
-Generates AI replies
-
-Manages knowledge base items
-
-
-ChromaDB
-
-Stores small documents/templates used for RAG-based replies.
-
+A complete email aggregation system that connects to IMAP inboxes, stores emails, classifies them using AI, and generates smart replies using RAG.
 
 ---
 
-Requirements
+## 🚀 Overview
 
-Install the following before running:
+### **Backend (Node.js + TypeScript)**
+- Connects to IMAP accounts
+- Fetches & stores emails in **Elasticsearch**
+- Classifies emails using **Gemini AI**
+- Generates replies using **RAG** (ChromaDB + embeddings)
+- Sends **Slack notifications & Webhook events** for *Interested* emails
 
-Node.js 18+
+### **Frontend (React)**
+- Shows list of emails  
+- Filtering & search  
+- AI reply generation  
+- Knowledge base management  
 
-Docker & Docker Compose
-
-Google Gemini API key
-
-(Optional) Slack Bot Token + Slack Channel
-
-
+### **ChromaDB**
+Stores small information snippets used for improved AI replies.
 
 ---
 
-Project Structure
+## 📦 Requirements
 
+Install the following:
+
+- **Node.js 18+**
+- **Docker + Docker Compose**
+- **Google Gemini API Key**
+- *(Optional)* Slack Bot Token + Channel
+
+---
+
+## 📁 Project Structure
+
+```
 apps/
   backend/
   frontend/
 docker-compose.yml
 .env
+```
 
-Key Files
-
-docker-compose.yml – Runs Elasticsearch, Kibana, ChromaDB
-
-apps/backend – All backend services
-
-apps/frontend – React interface
-
-.env – Environment variables
-
-
+### Important Files
+- `docker-compose.yml` – Elasticsearch, Kibana, ChromaDB
+- `apps/backend` – Backend API
+- `apps/frontend` – React interface
+- `.env` – Environment variables
 
 ---
 
-Example .env File
+## 🔑 Environment Variables
 
+Create a `.env` file:
+
+```
 PORT=4000
 HOST=0.0.0.0
 ELASTICSEARCH_NODE=http://localhost:9200
@@ -91,104 +71,99 @@ SLACK_CHANNEL=#your-channel
 INTERESTED_WEBHOOK_URL=https://webhook.site/your-id
 DATA_DIR=./data
 WEB_APP_ORIGIN=http://localhost:5173
-
+```
 
 ---
 
-How to Run
+## 🐳 Run Using Docker
 
-1. Start Docker Services
-
+### 1. Start Required Services
+```
 docker-compose up -d
+```
 
-Runs:
-
-Elasticsearch → http://localhost:9200
-
-Kibana → http://localhost:5601
-
-ChromaDB → http://localhost:8000
-
-
+This starts:
+- Elasticsearch → http://localhost:9200  
+- Kibana → http://localhost:5601  
+- ChromaDB → http://localhost:8000  
 
 ---
 
-2. Start Backend
+## ▶️ Start Backend
 
+```
 cd apps/backend
 npm install
 npm run dev
+```
 
-Backend starts at http://localhost:4000
-
+Backend runs at:
+```
+http://localhost:4000
+```
 
 ---
 
-3. Start Frontend
+## ▶️ Start Frontend
 
+```
 cd apps/frontend
 npm install
 npm run dev
+```
 
-Frontend runs at http://localhost:5173
-
-
----
-
-API Endpoints
-
-Endpoint	Method	Description
-
-/health	GET	Check backend status
-/emails	GET	List all emails
-/emails/:id	GET	Get details of a single email
-/emails/:id/reclassify	POST	Re-run AI classification
-/emails/:id/suggest-reply	POST	Generate AI reply
-/knowledge	GET	List knowledge base entries
-/knowledge	POST	Add entry
-/knowledge/:id	DELETE	Delete entry
-/accounts	GET	Show IMAP accounts
-
-
+Frontend runs at:
+```
+http://localhost:5173
+```
 
 ---
 
-Testing Features
+## 🔗 API Endpoints
 
-Open /emails in the browser to see stored emails
-
-Generate AI reply from the frontend
-
-Check Kibana index for email storage
-
-Trigger Slack/Webhook by marking an email “Interested”
-
-Add/delete Knowledge Base items
-
-
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/health` | GET | Check backend status |
+| `/emails` | GET | List all emails |
+| `/emails/:id` | GET | Get a specific email |
+| `/emails/:id/reclassify` | POST | Re-run AI classification |
+| `/emails/:id/suggest-reply` | POST | Generate AI reply |
+| `/knowledge` | GET | List knowledge base entries |
+| `/knowledge` | POST | Add knowledge item |
+| `/knowledge/:id` | DELETE | Delete item |
+| `/accounts` | GET | View IMAP accounts |
 
 ---
 
-Reset Email Data
+## 🧪 Features to Test
 
+- Open `/emails` to view stored emails  
+- Generate AI reply from frontend  
+- View email index in Kibana  
+- Slack/Webhook notifications on “Interested” emails  
+- Manage Knowledge Base items  
+
+---
+
+## 🧹 Reset Data
+
+Delete Elasticsearch index:
+
+```
 curl -X DELETE "http://localhost:9200/emails"
+```
 
 Or in Kibana Dev Tools:
 
+```
 DELETE /emails
-
+```
 
 ---
 
-How RAG Works (Simple)
+## 🧠 How RAG Works (Simple)
 
-1. ChromaDB stores small templates or reference documents.
-
-
-2. Backend fetches relevant items using embeddings.
-
-
-3. Combines them with the email content.
-
-
-4. Gemini generates a context-aware reply.
+1. ChromaDB stores small templates or reference texts  
+2. Backend finds relevant items using embeddings  
+3. Combines them with the email content  
+4. Gemini generates a context-aware, meaningful reply

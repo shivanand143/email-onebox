@@ -43,7 +43,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"label\": \"Personal Gmail\",\n  \"email\": \"historyitihasa@gmail.com\",\n  \"folders\": [\"INBOX\"],\n  \"imap\": {\n    \"host\": \"imap.gmail.com\",\n    \"port\": 993,\n    \"secure\": true,\n    \"auth\": {\n      \"user\": \"historyitihasa@gmail.com\",\n      \"pass\": \"ohaosmjeyaygvwlw\"\n    }\n  }\n}"
+              "raw": "{\n  \"label\": \"Personal Gmail\",\n  \"email\": \"xyz@gmail.com\",\n  \"folders\": [\"INBOX\"],\n  \"imap\": {\n    \"host\": \"imap.gmail.com\",\n    \"port\": 993,\n    \"secure\": true,\n    \"auth\": {\n      \"user\": \"xyz@gmail.com\",\n      \"pass\": \"ohaosmjeyaygvwlw\"\n    }\n  }\n}"
             },
             "url": {
               "raw": "{{baseUrl}}/accounts",
@@ -199,8 +199,8 @@
       "value": ""
     },
     {
-      "key": "143xyz420@gmail.com",
-      "value": "143xyz420@gmail.com"
+      "key": "xyz@gmail.com",
+      "value": "xyz@gmail.com"
     }
   ]
 }
